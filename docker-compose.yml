@@ -1,0 +1,59 @@
+# ============================================
+# 🐳 TRY-IT! DOCKER COMPOSE
+# ============================================
+# Deploy: docker-compose up -d
+# Stop:   docker-compose down
+# Logs:   docker-compose logs -f
+# ============================================
+
+version: '3.8'
+
+services:
+  # Main Application
+  try-it:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: try-it-app
+    restart: unless-stopped
+    ports:
+      - "3001:3001"   # Backend API
+      - "5173:5173"   # Frontend (dev mode)
+    environment:
+      # AI APIs
+      - GEMINI_API_KEY=AIzaSyBxBNue7IF23ohGEEuUjgDZ7VMFGvbaTtk
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - OPENROUTER_API_KEY=f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
+      # Supabase
+      - SUPABASE_URL=https://your-project.supabase.co
+      - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmYnNpdGlxbW5oZWhoeXhxa3JuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2ODAzNDksImV4cCI6MjA4MTI1NjM0OX0.Xj80cpsgb94qMnuO0aFLGMrlS0wI6-i72ZI5W1DqK-o
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      # Search
+      - TAVILY_API_KEY=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
+      # Server Config
+      - NODE_ENV=production
+      - PORT=3001
+      - JWT_SECRET=try_it_super_secure_jwt_secret_basel_omar_2024_x9k2m
+      - CORS_ORIGIN=http://localhost:5173
+      # Frontend
+      - VITE_SUPABASE_URL=https://your-project.supabase.co
+      - VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmYnNpdGlxbW5oZWhoeXhxa3JuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2ODAzNDksImV4cCI6MjA4MTI1NjM0OX0.Xj80cpsgb94qMnuO0aFLGMrlS0wI6-i72ZI5W1DqK-o
+      - VITE_API_URL=http://localhost:3001
+    volumes:
+      - try-it-data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - try-it-network
+
+volumes:
+  try-it-data:
+    driver: local
+
+networks:
+  try-it-network:
+    driver: bridge

@@ -1,0 +1,217 @@
+Vercel CLI 50.12.3
+The "--name" option is deprecated (https://vercel.link/name-flag)
+Retrieving project…
+Deploying basel0omars-projects/try-it-ai-ultimate
+Uploading [--------------------] (0.0B/272B)
+Uploading [====================] (272.0B/272B)
+Inspect: https://vercel.com/basel0omars-projects/try-it-ai-ultimate/5LxTbLkTBPrAGgJuymJfz3ihqXhn [3s]
+Production: https://try-it-ai-ultimate-dsixxsrt4-basel0omars-projects.vercel.app [3s]
+https://try-it-ai-ultimate-dsixxsrt4-basel0omars-projects.vercel.appBuilding...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Skipping build cache, deployment was triggered without cache.
+Building: Downloading 219 deployment files...
+Building: Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version
+Building: Running "vercel build"
+Building: Vercel CLI 50.10.2
+Building: Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version
+Building: Running "install" command: `npm install`...
+Building: added 1068 packages, and audited 1069 packages in 28s
+Building: 278 packages are looking for funding
+Building: run `npm fund` for details
+Building: 9 vulnerabilities (5 moderate, 4 high)
+Building: To address issues that do not require attention, run:
+Building: npm audit fix
+Building: To address all issues possible (including breaking changes), run:
+Building: npm audit fix --force
+Building: Some issues need review, and may require choosing
+Building: a different dependency.
+Building: Run `npm audit` for details.
+Building: > try-it-ai-ultimate@2.0.0 build:client
+Building: > vite build
+Building: vite v6.4.1 building for production...
+Building: transforming...
+Building: ✓ 2177 modules transformed.
+Building: rendering chunks...
+Building: computing gzip size...
+Building: dist/registerSW.js                          0.13 kB
+Building: dist/manifest.webmanifest                   1.41 kB
+Building: dist/index.html                            10.90 kB │ gzip:   3.38 kB
+Building: dist/assets/index-xwSHH2Us.css             64.83 kB │ gzip:  11.43 kB
+Building: dist/assets/LivePreviewPage-DkSC42zT.js     2.95 kB │ gzip:   1.16 kB
+Building: dist/assets/LoginPage-Dwqo1XvQ.js           3.52 kB │ gzip:   1.45 kB
+Building: dist/assets/NotesPage-DDpkEHJL.js           5.10 kB │ gzip:   1.93 kB
+Building: dist/assets/DecisionRoomPage-DeNbWvmX.js    6.61 kB │ gzip:   2.98 kB
+Building: dist/assets/RemindersPage-uJOoKkQ3.js       6.82 kB │ gzip:   2.25 kB
+Building: dist/assets/VoiceCallPage-LLz7RH0R.js       7.08 kB │ gzip:   2.79 kB
+Building: dist/assets/MemoryPage-BdrMZRWb.js          7.58 kB │ gzip:   2.70 kB
+Building: dist/assets/WorkflowPage-0RrzlC-C.js       10.38 kB │ gzip:   3.59 kB
+Building: dist/assets/TasksPage-Yxc0PEU-.js          12.25 kB │ gzip:   3.48 kB
+Building: dist/assets/AdminPage-Dg2K9UK1.js          21.27 kB │ gzip:   4.90 kB
+Building: dist/assets/purify.es-B9ZVCkUG.js          22.64 kB │ gzip:   8.75 kB
+Building: dist/assets/AgentsPage-Brd6pH8l.js         24.21 kB │ gzip:   7.46 kB
+Building: dist/assets/SettingsPage-CB8blrtf.js       26.21 kB │ gzip:   7.22 kB
+Building: dist/assets/index-BK0xxgSS.js              31.31 kB │ gzip:  10.15 kB
+Building: dist/assets/ComputerUsePage-UGcKqIbg.js    33.80 kB │ gzip:   9.40 kB
+Building: dist/assets/ChatPage-C-8SBKPJ.js           34.38 kB │ gzip:  11.82 kB
+Building: dist/assets/ui-DKQhi4U3.js                 52.72 kB │ gzip:  12.96 kB
+Building: dist/assets/markdown-BdIg9_gL.js          157.67 kB │ gzip:  47.92 kB
+Building: dist/assets/index.es-Bj2nr0UJ.js          159.51 kB │ gzip:  53.50 kB
+Building: dist/assets/supabase-DnXMD_7a.js          172.25 kB │ gzip:  45.56 kB
+Building: dist/assets/vendor-BLFagYzW.js            178.01 kB │ gzip:  58.51 kB
+Building: dist/assets/html2canvas.esm-QH1iLAAe.js   202.38 kB │ gzip:  48.04 kB
+Building: dist/assets/chat-Bp6AZjx8.js              293.39 kB │ gzip:  99.23 kB
+Building: dist/assets/providers-DHk5S4la.js         839.01 kB │ gzip: 261.49 kB
+Building: ✓ built in 9.97s
+Building: (!) Some chunks are larger than 500 kB after minification. Consider:
+Building: - Using dynamic import() to code-split the application
+Building: - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+Building: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+Building: PWA v0.20.5
+Building: mode      generateSW
+Building: precache  61 entries (2387.32 KiB)
+Building: files generated
+Building: dist/sw.js
+Building: dist/workbox-4b126c97.js
+Building: Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version
+Building: Installing dependencies...
+Building: up to date in 1s
+Building: 278 packages are looking for funding
+Building: run `npm fund` for details
+Building: Using TypeScript 5.9.3 (local user-provided)
+Building: server/index.ts(23,3): error TS6133: 'passwordResetLimiter' is declared but its value is never read.
+Building: server/index.ts(152,17): error TS6133: 'res' is declared but its value is never read.
+Building: server/index.ts(176,25): error TS6133: 'req' is declared but its value is never read.
+Building: server/index.ts(185,30): error TS6133: 'req' is declared but its value is never read.
+Building: server/index.ts(239,20): error TS6133: 'req' is declared but its value is never read.
+Building: server/index.ts(302,9): error TS6133: 'providerList' is declared but its value is never read.
+Building: server/lib/security.ts(75,33): error TS6133: 'req' is declared but its value is never read.
+Building: server/lib/security.ts(175,69): error TS6133: 'next' is declared but its value is never read.
+Building: server/lib/security.ts(310,60): error TS6133: 'res' is declared but its value is never read.
+Building: server/lib/security.ts(387,44): error TS6133: 'res' is declared but its value is never read.
+Building: server/lib/knowledge-system.ts(232,49): error TS6133: 'context' is declared but its value is never read.
+Building: server/routes/stream-chat.ts(13,10): error TS6133: 'generateUnlimitedSystemPrompt' is declared but its value is never read.
+Building: server/routes/stream-chat.ts(14,34): error TS2440: Import declaration conflicts with local declaration of 'detectMood'.
+Building: server/routes/stream-chat.ts(171,5): error TS6133: 'files' is declared but its value is never read.
+Building: server/routes/stream-chat.ts(175,5): error TS6133: 'unlimitedConfig' is declared but its value is never read.
+Building: server/routes/stream-chat.ts(194,61): error TS2339: Property 'mood' does not exist on type 'string'.
+Building: server/routes/stream-chat.ts(209,71): error TS2339: Property 'mood' does not exist on type 'string'.
+Building: server/routes/stream-chat.ts(262,22): error TS2339: Property 'mood' does not exist on type 'string'.
+Building: server/routes/stream-chat.ts(263,27): error TS2339: Property 'emoji' does not exist on type 'string'.
+Building: server/routes/stream-chat.ts(614,80): error TS2353: Object literal may only specify known properties, and 'taskType' does not exist in type 'RoutingOptions'.
+Building: server/routes/auth.ts(144,27): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(145,28): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(181,27): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(182,28): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(246,27): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(247,28): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(279,27): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(280,28): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(348,28): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(349,29): error TS2554: Expected 2 arguments, but got 1.
+Building: server/routes/auth.ts(419,47): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/integrations.ts(190,39): error TS2538: Type 'string[]' cannot be used as an index type.
+Building: server/routes/integrations.ts(251,48): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/integrations.ts(347,51): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/integrations.ts(364,38): error TS6133: 'integrationId' is declared but its value is never read.
+Building: server/routes/integrations.ts(364,61): error TS6133: 'code' is declared but its value is never read.
+Building: server/routes/integrations.ts(367,9): error TS6133: 'tokenUrls' is declared but its value is never read.
+Building: server/routes/integrations.ts(374,9): error TS6133: 'clientSecrets' is declared but its value is never read.
+Building: server/routes/computer-use.ts(13,29): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/computer-use.ts(30,30): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/voice.ts(86,34): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/voice.ts(103,24): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/voice.ts(141,41): error TS6133: 'speed' is declared but its value is never read.
+Building: server/routes/voice.ts(174,34): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/memory.ts(175,32): error TS6133: 'threshold' is declared but its value is never read.
+Building: server/routes/triggers.ts(18,46): error TS2503: Cannot find namespace 'cron'.
+Building: server/routes/triggers.ts(171,45): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/triggers.ts(174,30): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/triggers.ts(179,21): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/triggers.ts(199,43): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/triggers.ts(202,28): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/triggers.ts(247,45): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/triggers.ts(251,23): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/triggers.ts(255,30): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/triggers.ts(430,54): error TS6133: 'payload' is declared but its value is never read.
+Building: server/routes/agents.ts(13,25): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/agents.ts(22,23): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/agents.ts(35,37): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/agents.ts(54,40): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/agents.ts(94,43): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/agents.ts(117,45): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/agents.ts(148,49): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/agents.ts(230,57): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/agents.ts(246,51): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string | undefined'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/agents.ts(263,48): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/admin.ts(42,24): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/admin.ts(53,23): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/admin.ts(64,24): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/admin.ts(79,23): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/admin.ts(104,36): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/admin.ts(113,31): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/admin.ts(132,30): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/admin.ts(155,25): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/admin.ts(170,25): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/computer.ts(104,19): error TS2339: Property 'startsWith' does not exist on type 'string | string[]'.
+Building: Property 'startsWith' does not exist on type 'string[]'.
+Building: server/routes/computer.ts(105,30): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/computer.ts(118,28): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/computer.ts(435,40): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+Building: Type 'string[]' is not assignable to type 'string'.
+Building: server/routes/computer.ts(445,19): error TS2339: Property 'startsWith' does not exist on type 'string | string[]'.
+Building: Property 'startsWith' does not exist on type 'string[]'.
+Building: server/routes/computer.ts(477,33): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/messaging.ts(7,1): error TS6133: 'crypto' is declared but its value is never read.
+Building: server/routes/messaging.ts(58,17): error TS6133: 'timestamp' is declared but its value is never read.
+Building: server/routes/messaging.ts(173,42): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/messaging.ts(281,13): error TS6133: 'chatId' is declared but its value is never read.
+Building: server/routes/messaging.ts(357,35): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/messaging.ts(380,45): error TS6133: 'req' is declared but its value is never read.
+Building: server/routes/messaging.ts(446,24): error TS6133: 'req' is declared but its value is never read.
+Building: server/lib/admin-agent.ts(113,11): error TS6196: 'AdminCommand' is declared but never used.
+Building: server/lib/smart-router.ts(12,3): error TS6133: 'PROVIDER_PRICING' is declared but its value is never read.
+Building: server/lib/smart-router.ts(684,5): error TS6133: 'actualCost' is declared but its value is never read.
+Building: server/lib/smart-router.ts(859,26): error TS2345: Argument of type 'ProviderHealth | { failures: number; avgLatency: number; lastFailure: number; }' is not assignable to parameter of type 'ProviderHealth'.
+Building: Type '{ failures: number; avgLatency: number; lastFailure: number; }' is missing the following properties from type 'ProviderHealth': latencies, lastSuccess
+Building: server/lib/smart-router.ts(867,26): error TS2345: Argument of type 'ProviderHealth | { failures: number; avgLatency: number; lastFailure: number; }' is not assignable to parameter of type 'ProviderHealth'.
+Building: Type '{ failures: number; avgLatency: number; lastFailure: number; }' is missing the following properties from type 'ProviderHealth': latencies, lastSuccess
+Building: server/lib/personality.ts(113,9): error TS6133: 'lowerText' is declared but its value is never read.
+Building: server/lib/unlimited-ai.ts(17,25): error TS6133: 'userId' is declared but its value is never read.
+Building: server/lib/unlimited-ai.ts(104,40): error TS6133: 'config' is declared but its value is never read.
+Building: server/services/browser-automation.ts(28,11): error TS6133: 'isRunning' is declared but its value is never read.
+Building: Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version
+Building: Using TypeScript 5.9.3 (local user-provided)
+Building: api/[...path].ts(60,25): error TS6133: 'req' is declared but its value is never read.
+Building: api/[...path].ts(65,20): error TS6133: 'req' is declared but its value is never read.
+[2K[1A[2K[GProduction: https://try-it-ai-ultimate-dsixxsrt4-basel0omars-projects.vercel.app [5h]
+Completing...
+Aliased: https://try-it-ai-ultimate.vercel.app [5h]
+
+Common next commands:
+- `vercel inspect try-it-ai-ultimate-dsixxsrt4-basel0omars-projects.vercel.app --logs`
+- `vercel redeploy try-it-ai-ultimate-dsixxsrt4-basel0omars-projects.vercel.app`
