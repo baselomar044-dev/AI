@@ -1,0 +1,59 @@
+{
+  "theme": {
+    "name": "Default Dark",
+    "colors": {
+      "primary": "#6366f1",
+      "secondary": "#8b5cf6",
+      "accent": "#f59e0b",
+      "background": "#0f0f23",
+      "surface": "#1a1a2e",
+      "text": "#ffffff",
+      "textSecondary": "#a0a0a0",
+      "border": "#2a2a4a",
+      "success": "#22c55e",
+      "warning": "#f59e0b",
+      "error": "#ef4444",
+      "info": "#3b82f6"
+    },
+    "fonts": {
+      "primary": "Inter, system-ui, sans-serif",
+      "secondary": "Plus Jakarta Sans, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "borderRadius": "12px",
+    "spacing": "1rem"
+  },
+  "layout": {
+    "sidebarPosition": "left",
+    "sidebarWidth": "280px",
+    "headerHeight": "60px",
+    "chatBubbleStyle": "rounded",
+    "messageAlignment": "alternate",
+    "compactMode": false,
+    "showTimestamps": true,
+    "showAvatars": true,
+    "animationsEnabled": true
+  },
+  "features": {
+    "voiceEnabled": true,
+    "computerUseEnabled": true,
+    "agentsEnabled": true,
+    "integrationsEnabled": true,
+    "memoryEnabled": true,
+    "notesEnabled": true,
+    "remindersEnabled": true
+  },
+  "ai": {
+    "defaultModel": "auto",
+    "temperature": 0.7,
+    "maxTokens": 4096,
+    "streamingEnabled": true
+  },
+  "maintenance": {
+    "autoBackup": true,
+    "backupFrequency": "daily",
+    "autoCleanup": true,
+    "cleanupDays": 30,
+    "healthCheckEnabled": true
+  }
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline - Try-It!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #0a0f1a 0%, #1a1f2e 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 400px;
+    }
+    
+    .icon {
+      font-size: 80px;
+      margin-bottom: 24px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    h1 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    p {
+      color: #94a3b8;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+    }
+    
+    .status {
+      margin-top: 24px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    
+    .status.online {
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+    }
+    
+    /* Arabic support */
+    [dir="rtl"] {
+      direction: rtl;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">📡</div>
+    <h1 id="title">You're Offline</h1>
+    <p id="message">
+      It looks like you've lost your internet connection. 
+      Don't worry, Try-It! will work again once you're back online.
+    </p>
+    <button class="btn" onclick="tryReconnect()">
+      <span>🔄</span>
+      <span id="btn-text">Try Again</span>
+    </button>
+    <div class="status" id="status">
+      Checking connection...
+    </div>
+  </div>
+  
+  <script>
+    // Detect language
+    const isArabic = navigator.language.startsWith('ar') || 
+                     localStorage.getItem('language') === 'ar';
+    
+    if (isArabic) {
+      document.body.dir = 'rtl';
+      document.getElementById('title').textContent = 'أنت غير متصل';
+      document.getElementById('message').textContent = 
+        'يبدو أنك فقدت اتصالك بالإنترنت. لا تقلق، Try-It! سيعمل مرة أخرى عند عودة الاتصال.';
+      document.getElementById('btn-text').textContent = 'حاول مرة أخرى';
+    }
+    
+    // Check connection status
+    function checkConnection() {
+      const status = document.getElementById('status');
+      
+      if (navigator.onLine) {
+        status.textContent = isArabic ? 'متصل! جاري إعادة التحميل...' : 'Connected! Reloading...';
+        status.classList.add('online');
+        setTimeout(() => window.location.reload(), 1000);
+      } else {
+        status.textContent = isArabic ? 'لا يوجد اتصال بالإنترنت' : 'No internet connection';
+        status.classList.remove('online');
+      }
+    }
+    
+    function tryReconnect() {
+      const status = document.getElementById('status');
+      status.textContent = isArabic ? 'جاري التحقق...' : 'Checking...';
+      
+      fetch('/', { method: 'HEAD', cache: 'no-store' })
+        .then(() => {
+          status.textContent = isArabic ? 'متصل! جاري إعادة التحميل...' : 'Connected! Reloading...';
+          status.classList.add('online');
+          setTimeout(() => window.location.reload(), 500);
+        })
+        .catch(() => {
+          status.textContent = isArabic ? 'لا يزال غير متصل' : 'Still offline';
+          status.classList.remove('online');
+        });
+    }
+    
+    // Auto-check when online
+    window.addEventListener('online', checkConnection);
+    window.addEventListener('offline', checkConnection);
+    
+    // Initial check
+    checkConnection();
+  </script>
+</body>
+</html>

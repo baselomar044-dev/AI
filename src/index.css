@@ -1,0 +1,500 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   TRY-IT! THEME SYSTEM
+   Supports: dark, light, pink
+   ============================================ */
+
+/* ============================================
+   DYNAMIC THEME VARIABLES (Set by Admin Agent)
+   ============================================ */
+:root {
+  /* Colors - These are overridden by dynamic-theme.ts */
+  --color-primary: #6366f1;
+  --color-secondary: #8b5cf6;
+  --color-accent: #f59e0b;
+  --color-background: #0f0f23;
+  --color-surface: #1a1a2e;
+  --color-text: #ffffff;
+  --color-textSecondary: #a0a0a0;
+  --color-border: #2a2a4a;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+  
+  /* Fonts */
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Layout */
+  --border-radius: 12px;
+  --spacing: 1rem;
+  --sidebar-width: 280px;
+  --header-height: 60px;
+  
+  /* Legacy */
+  --color-primary-hover: #4f46e5;
+}
+
+/* Apply dynamic colors globally */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+}
+
+/* Utility classes using CSS variables */
+.bg-dynamic-primary { background-color: var(--color-primary); }
+.bg-dynamic-secondary { background-color: var(--color-secondary); }
+.bg-dynamic-surface { background-color: var(--color-surface); }
+.bg-dynamic-background { background-color: var(--color-background); }
+.text-dynamic-primary { color: var(--color-primary); }
+.text-dynamic-secondary { color: var(--color-textSecondary); }
+.text-dynamic { color: var(--color-text); }
+.border-dynamic { border-color: var(--color-border); }
+
+/* Layout modifiers (set by Admin Agent) */
+body.compact-mode {
+  --spacing: 0.5rem;
+  font-size: 14px;
+}
+
+body.no-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+body.hide-timestamps .message-time {
+  display: none !important;
+}
+
+body.hide-avatars .message-avatar {
+  display: none !important;
+}
+
+body.sidebar-right .main-layout {
+  flex-direction: row-reverse;
+}
+
+body.sidebar-hidden aside {
+  display: none !important;
+}
+
+/* ============================================
+   DARK THEME (default)
+   ============================================ */
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background-color: #0a0f1a;
+  color: #f1f5f9;
+}
+
+/* Make dark: classes work on dark theme */
+[data-theme="dark"] .dark\:bg-gray-900 { background-color: #0a0f1a !important; }
+[data-theme="dark"] .dark\:bg-gray-800 { background-color: #111827 !important; }
+[data-theme="dark"] .dark\:bg-gray-700 { background-color: #1e293b !important; }
+[data-theme="dark"] .dark\:bg-gray-600 { background-color: #334155 !important; }
+[data-theme="dark"] .dark\:border-gray-700 { border-color: #1e3a5f !important; }
+[data-theme="dark"] .dark\:border-gray-600 { border-color: #334155 !important; }
+[data-theme="dark"] .dark\:border-gray-800 { border-color: #1e293b !important; }
+[data-theme="dark"] .dark\:border-blue-800 { border-color: #1e3a8a !important; }
+[data-theme="dark"] .dark\:text-gray-400 { color: #94a3b8 !important; }
+[data-theme="dark"] .dark\:text-gray-300 { color: #cbd5e1 !important; }
+[data-theme="dark"] .dark\:text-white { color: #ffffff !important; }
+[data-theme="dark"] .dark\:from-blue-900\/30 { --tw-gradient-from: rgb(30 58 138 / 0.3) !important; }
+[data-theme="dark"] .dark\:to-purple-900\/30 { --tw-gradient-to: rgb(88 28 135 / 0.3) !important; }
+[data-theme="dark"] .dark\:hover\:bg-gray-700:hover { background-color: #1e293b !important; }
+[data-theme="dark"] .dark\:hover\:bg-gray-600:hover { background-color: #334155 !important; }
+[data-theme="dark"] .dark\:hover\:bg-blue-900\/30:hover { background-color: rgb(30 58 138 / 0.3) !important; }
+[data-theme="dark"] .dark\:hover\:bg-red-900\/30:hover { background-color: rgb(127 29 29 / 0.3) !important; }
+
+/* ============================================
+   LIGHT THEME
+   ============================================ */
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="light"] body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Override dark: classes on light theme - they become ineffective */
+[data-theme="light"] .dark\:bg-gray-900 { background-color: transparent !important; }
+[data-theme="light"] .dark\:bg-gray-800 { background-color: transparent !important; }
+[data-theme="light"] .dark\:bg-gray-700 { background-color: transparent !important; }
+[data-theme="light"] .dark\:border-gray-700 { border-color: transparent !important; }
+[data-theme="light"] .dark\:border-gray-600 { border-color: transparent !important; }
+[data-theme="light"] .dark\:text-gray-400 { color: inherit !important; }
+[data-theme="light"] .dark\:text-gray-300 { color: inherit !important; }
+
+/* Light theme colors */
+[data-theme="light"] .bg-white { background-color: #ffffff !important; }
+[data-theme="light"] .bg-gray-50 { background-color: #f8fafc !important; }
+[data-theme="light"] .bg-gray-100 { background-color: #f1f5f9 !important; }
+[data-theme="light"] .border-gray-200 { border-color: #e2e8f0 !important; }
+[data-theme="light"] .text-gray-500 { color: #64748b !important; }
+[data-theme="light"] .text-gray-400 { color: #94a3b8 !important; }
+
+/* ============================================
+   PINK THEME
+   ============================================ */
+[data-theme="pink"] {
+  color-scheme: light;
+}
+
+[data-theme="pink"] body {
+  background-color: #fdf2f8;
+  color: #831843;
+}
+
+/* Override dark: classes on pink theme */
+[data-theme="pink"] .dark\:bg-gray-900 { background-color: #fce7f3 !important; }
+[data-theme="pink"] .dark\:bg-gray-800 { background-color: #fbcfe8 !important; }
+[data-theme="pink"] .dark\:bg-gray-700 { background-color: #f9a8d4 !important; }
+[data-theme="pink"] .dark\:border-gray-700 { border-color: #f9a8d4 !important; }
+[data-theme="pink"] .dark\:border-gray-600 { border-color: #f472b6 !important; }
+[data-theme="pink"] .dark\:text-gray-400 { color: #9d174d !important; }
+[data-theme="pink"] .dark\:text-gray-300 { color: #831843 !important; }
+[data-theme="pink"] .dark\:hover\:bg-gray-700:hover { background-color: #fbcfe8 !important; }
+
+/* Pink theme base colors */
+[data-theme="pink"] .bg-white { background-color: #fdf2f8 !important; }
+[data-theme="pink"] .bg-gray-50 { background-color: #fce7f3 !important; }
+[data-theme="pink"] .bg-gray-100 { background-color: #fbcfe8 !important; }
+[data-theme="pink"] .bg-gray-200 { background-color: #f9a8d4 !important; }
+[data-theme="pink"] .border-gray-200 { border-color: #f9a8d4 !important; }
+[data-theme="pink"] .border-gray-300 { border-color: #f472b6 !important; }
+[data-theme="pink"] .text-gray-500 { color: #9d174d !important; }
+[data-theme="pink"] .text-gray-400 { color: #be185d !important; }
+[data-theme="pink"] .text-gray-600 { color: #831843 !important; }
+
+/* Pink gradient override */
+[data-theme="pink"] .from-blue-500 { --tw-gradient-from: #ec4899 !important; }
+[data-theme="pink"] .to-purple-600 { --tw-gradient-to: #db2777 !important; }
+[data-theme="pink"] .from-blue-600 { --tw-gradient-from: #db2777 !important; }
+[data-theme="pink"] .to-purple-700 { --tw-gradient-to: #be185d !important; }
+[data-theme="pink"] .bg-blue-500 { background-color: #ec4899 !important; }
+[data-theme="pink"] .bg-purple-500 { background-color: #db2777 !important; }
+[data-theme="pink"] .text-blue-500 { color: #ec4899 !important; }
+[data-theme="pink"] .hover\:text-blue-500:hover { color: #db2777 !important; }
+[data-theme="pink"] .hover\:bg-blue-50:hover { background-color: #fce7f3 !important; }
+[data-theme="pink"] .ring-blue-500 { --tw-ring-color: #ec4899 !important; }
+[data-theme="pink"] .focus\:ring-blue-500:focus { --tw-ring-color: #ec4899 !important; }
+[data-theme="pink"] .border-blue-200 { border-color: #f9a8d4 !important; }
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #0a0f1a;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #1e3a5f;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+[data-theme="pink"] ::-webkit-scrollbar-track {
+  background: #fce7f3;
+}
+
+[data-theme="pink"] ::-webkit-scrollbar-thumb {
+  background: #f9a8d4;
+  border-radius: 4px;
+}
+
+[data-theme="pink"] ::-webkit-scrollbar-thumb:hover {
+  background: #f472b6;
+}
+
+/* ============================================
+   SELECTION COLORS
+   ============================================ */
+[data-theme="dark"] ::selection {
+  background-color: #2563eb;
+  color: white;
+}
+
+[data-theme="light"] ::selection {
+  background-color: #3b82f6;
+  color: white;
+}
+
+[data-theme="pink"] ::selection {
+  background-color: #ec4899;
+  color: white;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Focus visible styling */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Safe area padding for mobile */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* ============================================
+   MOBILE-FIRST OPTIMIZATIONS
+   ============================================ */
+
+/* Prevent overscroll bounce on iOS */
+html {
+  overscroll-behavior: none;
+}
+
+/* Smoother scrolling on mobile */
+@media (pointer: coarse) {
+  * {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Touch-friendly tap targets (min 44px) */
+@media (pointer: coarse) {
+  button, 
+  a, 
+  input[type="submit"],
+  input[type="button"],
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent zoom on double tap for iOS */
+* {
+  touch-action: manipulation;
+}
+
+/* Prevent text resize on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Better font rendering on mobile */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Mobile keyboard handling */
+@media (max-height: 500px) and (max-width: 768px) {
+  .keyboard-hide {
+    display: none !important;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .landscape-compact {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+}
+
+/* PWA standalone mode adjustments */
+@media (display-mode: standalone) {
+  .pwa-hide {
+    display: none !important;
+  }
+  
+  /* Extra padding for notched devices in PWA mode */
+  .pwa-safe-top {
+    padding-top: max(env(safe-area-inset-top), 20px);
+  }
+}
+
+/* Fullscreen mode */
+@media (display-mode: fullscreen) {
+  .fullscreen-padding {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+}
+
+/* Mobile sidebar overlay */
+@media (max-width: 768px) {
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+    backdrop-filter: blur(4px);
+  }
+  
+  .mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 85vw;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* Hide on mobile / show on desktop */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Loading states */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Haptic feedback visual indicator */
+.haptic-press:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+input, textarea, select {
+  font-family: inherit;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #64748b;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #94a3b8;
+}
+
+[data-theme="pink"] input::placeholder,
+[data-theme="pink"] textarea::placeholder {
+  color: #9d174d;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  nav, aside, button {
+    display: none !important;
+  }
+}

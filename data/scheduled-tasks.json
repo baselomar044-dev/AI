@@ -1,0 +1,43 @@
+[
+  {
+    "id": "weekly-maintenance",
+    "name": "Weekly Maintenance",
+    "type": "maintenance",
+    "schedule": "0 3 * * 0",
+    "enabled": true,
+    "action": "runMaintenance",
+    "lastRun": "2026-01-31T00:56:31.657Z"
+  },
+  {
+    "id": "daily-backup",
+    "name": "Daily Backup",
+    "type": "backup",
+    "schedule": "0 2 * * *",
+    "enabled": true,
+    "action": "createBackup",
+    "lastRun": "2026-02-06T19:58:16.656Z"
+  },
+  {
+    "id": "weekly-report",
+    "name": "Weekly Report",
+    "type": "report",
+    "schedule": "0 9 * * 1",
+    "enabled": true,
+    "action": "generateReport",
+    "config": {
+      "type": "weekly"
+    },
+    "lastRun": "2026-01-31T00:56:31.659Z"
+  },
+  {
+    "id": "cleanup-old-data",
+    "name": "Cleanup Old Data",
+    "type": "cleanup",
+    "schedule": "0 4 * * 0",
+    "enabled": true,
+    "action": "cleanupOldData",
+    "config": {
+      "daysToKeep": 30
+    }
+  }
+]
