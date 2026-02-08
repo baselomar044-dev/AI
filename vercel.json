@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "pnpm build:client",
+  "buildCommand": "npx vite build",
   "outputDirectory": "dist",
-  "installCommand": "pnpm install --no-frozen-lockfile",
+  "installCommand": "npm install --omit=dev --legacy-peer-deps",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/[...path].ts" },
     { "source": "/:path*", "destination": "/index.html" }
