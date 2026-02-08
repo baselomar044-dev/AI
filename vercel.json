@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run build:client",
+  "buildCommand": "yarn build:client",
   "outputDirectory": "dist",
-  "installCommand": "npm install",
+  "installCommand": "yarn install --ignore-engines",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/[...path].ts" },
     { "source": "/:path*", "destination": "/index.html" }
