@@ -1,0 +1,5 @@
+
+/* Default style.css to prevent 404s in previews */
+body {
+  /* No default styles applied to allow preview content to take over */
+}
