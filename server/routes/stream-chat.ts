@@ -4,6 +4,8 @@
 // Understands: Arabic, English, Franco-Arab
 // ALWAYS responds in Arabic unless explicitly asked otherwise
 // ============================================
+// VERCEL FIX: Using pure in-memory storage (no filesystem)
+// ============================================
 
 import { Router, Request, Response } from 'express';
 import { GoogleGenerativeAI } from '@google/generative-ai';
@@ -23,41 +25,9 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 // Initialize smart router
 const smartRouter = new SmartRouter();
 
-import fs from 'fs';
-import path from 'path';
-
-// Persistence
-const DATA_DIR = path.join(process.cwd(), 'data');
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-
-const MEMORY_FILE = path.join(DATA_DIR, 'memory.json');
-const PERSONALITY_FILE = path.join(DATA_DIR, 'personality.json');
-
-// Helper to load/save JSON
-function loadJSON(file: string, defaultVal: any) {
-  try {
-    if (fs.existsSync(file)) {
-      return JSON.parse(fs.readFileSync(file, 'utf-8'));
-    }
-  } catch (e) {
-    console.error(`Failed to load ${file}`, e);
-  }
-  return defaultVal;
-}
-
-function saveJSON(file: string, data: any) {
-  try {
-    fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf-8');
-  } catch (e) {
-    console.error(`Failed to save ${file}`, e);
-  }
-}
-
-// In-memory stores backed by file
-let personalityStore: Record<string, any> = loadJSON(PERSONALITY_FILE, {});
-let memoryStore: Record<string, any[]> = loadJSON(MEMORY_FILE, {});
+// VERCEL FIX: Pure in-memory storage (no filesystem)
+let personalityStore: Record<string, any> = {};
+let memoryStore: Record<string, any[]> = {};
 
 // Simple personality manager
 class PersonalityManager {
@@ -75,7 +45,6 @@ class PersonalityManager {
   async update(updates: any) {
     this.data = { ...this.data, ...updates };
     personalityStore[this.userId] = this.data;
-    saveJSON(PERSONALITY_FILE, personalityStore);
   }
   
   getSystemPrompt() {
@@ -112,13 +81,12 @@ class MemoryManager {
         ...memory,
         timestamp: new Date().toISOString()
         });
-        saveJSON(MEMORY_FILE, memoryStore);
     }
   }
 }
 
 // Mood detection
-function detectMood(text: string): string {
+function detectMoodLocal(text: string): string {
   const lowerText = text.toLowerCase();
   
   // Happy indicators
@@ -215,10 +183,6 @@ router.post('/stream', async (req: Request, res: Response) => {
     conversationHistory = [],
     apiKeys = {}, // Receive API keys from client
   } = req.body;
-  
-  // Update process.env with client keys if provided (for this request context)
-  // Note: We use a helper or local variables instead of mutating process.env globally to avoid race conditions,
-  // but for simplicity in this architecture, we'll prioritize checking apiKeys object in provider calls.
   
   const userId = (req as any).user?.id || 'anonymous';
   
