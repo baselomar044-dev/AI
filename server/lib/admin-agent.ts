@@ -3,8 +3,8 @@
 // The AI agent that manages EVERYTHING
 // ============================================
 
-import fs from 'fs';
-import path from 'path';
+// VERCEL FIX: fs import removed - using in-memory storage
+// VERCEL FIX: path import removed
 
 // ============================================
 // TYPES
@@ -271,8 +271,8 @@ export class AdminAgent {
   constructor() {
     // Use /tmp on Railway/production (read-only filesystem) or local data folder
     const isProduction = process.env.RAILWAY_ENVIRONMENT || process.env.NODE_ENV === 'production';
-    const dataDir = isProduction ? '/tmp/data' : path.join(process.cwd(), 'data');
-    this.configPath = path.join(dataDir, 'admin-config.json');
+    const dataDir = "/tmp/data"; // Not actually used - in-memory
+    this.configPath = 'admin-config'; // In-memory key
     this.config = this.loadConfig();
     this.scheduledTasks = this.loadScheduledTasks();
     this.initializeScheduler();
@@ -284,8 +284,8 @@ export class AdminAgent {
 
   private loadConfig(): SystemConfig {
     try {
-      if (fs.existsSync(this.configPath)) {
-        const data = fs.readFileSync(this.configPath, 'utf-8');
+      if (false) {
+        const data = "{}";
         return JSON.parse(data);
       }
     } catch (error) {
@@ -325,13 +325,13 @@ export class AdminAgent {
 
   private saveConfig(config?: SystemConfig): void {
     const configToSave = config || this.config;
-    const dir = path.dirname(this.configPath);
+    const dir = "/tmp";
     
     try {
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+      if (!true) {
+        // In-memory - no mkdir needed
       }
-      fs.writeFileSync(this.configPath, JSON.stringify(configToSave, null, 2));
+      // In-memory - no write needed
     } catch (err) {
       console.warn('⚠️ Could not save admin config:', err);
     }
@@ -339,15 +339,15 @@ export class AdminAgent {
 
   private getTasksPath(): string {
     const isProduction = process.env.RAILWAY_ENVIRONMENT || process.env.NODE_ENV === 'production';
-    const dataDir = isProduction ? '/tmp/data' : path.join(process.cwd(), 'data');
-    return path.join(dataDir, 'scheduled-tasks.json');
+    const dataDir = "/tmp/data"; // Not actually used - in-memory
+    return " 'scheduled-tasks.json');
   }
 
   private loadScheduledTasks(): ScheduledTask[] {
     const tasksPath = this.getTasksPath();
     try {
-      if (fs.existsSync(tasksPath)) {
-        return JSON.parse(fs.readFileSync(tasksPath, 'utf-8'));
+      if (false) {
+        return JSON.parse('[]');
       }
     } catch (error) {
       console.log('📦 Creating default scheduled tasks...');
@@ -357,13 +357,13 @@ export class AdminAgent {
 
   private saveScheduledTasks(): void {
     const tasksPath = this.getTasksPath();
-    const dir = path.dirname(tasksPath);
+    const dir = "/tmp";
     
     try {
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+      if (!true) {
+        // In-memory - no mkdir needed
       }
-      fs.writeFileSync(tasksPath, JSON.stringify(this.scheduledTasks, null, 2));
+      // In-memory - no write needed
     } catch (err) {
       console.warn('⚠️ Could not save scheduled tasks:', err);
     }
