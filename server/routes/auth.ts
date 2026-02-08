@@ -1,12 +1,12 @@
 // ============================================
 // 🔐 AUTH ROUTES - Local + Supabase Support
 // ============================================
+// VERCEL FIX: Using pure in-memory storage (no filesystem)
+// ============================================
 
 import { Router, Request, Response } from 'express';
 import { createClient } from '@supabase/supabase-js';
 import bcrypt from 'bcryptjs';
-import fs from 'fs';
-import path from 'path';
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -19,25 +19,7 @@ import {
 
 const router = Router();
 
-// ================== LOCAL STORAGE (for development) ==================
-
-// Use /tmp on Railway/production (read-only filesystem) or local data folder
-const isProduction = process.env.RAILWAY_ENVIRONMENT || process.env.NODE_ENV === 'production';
-const dataDir = isProduction ? '/tmp/data' : path.join(process.cwd(), 'data');
-const LOCAL_DB_PATH = path.join(dataDir, 'users.json');
-
-// Ensure data directory exists
-try {
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-  // Initialize users.json if it doesn't exist
-  if (!fs.existsSync(LOCAL_DB_PATH)) {
-    fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify({ users: [] }, null, 2));
-  }
-} catch (err) {
-  console.warn('⚠️ Could not initialize local storage:', err);
-}
+// ================== IN-MEMORY STORAGE (Vercel compatible) ==================
 
 interface LocalUser {
   id: string;
@@ -48,17 +30,15 @@ interface LocalUser {
   updated_at: string;
 }
 
+// In-memory user store (resets on cold start, but that's fine for demo/dev)
+let localUsers: LocalUser[] = [];
+
 const getLocalUsers = (): LocalUser[] => {
-  try {
-    const data = fs.readFileSync(LOCAL_DB_PATH, 'utf-8');
-    return JSON.parse(data).users || [];
-  } catch {
-    return [];
-  }
+  return localUsers;
 };
 
 const saveLocalUsers = (users: LocalUser[]) => {
-  fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify({ users }, null, 2));
+  localUsers = users;
 };
 
 const generateId = () => `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -73,7 +53,7 @@ const supabase = useSupabase
   ? createClient(supabaseUrl!, supabaseServiceKey!)
   : null;
 
-console.log(useSupabase ? '🔗 Auth: Using Supabase' : '💾 Auth: Using Local Storage');
+console.log(useSupabase ? '🔗 Auth: Using Supabase' : '💾 Auth: Using In-Memory Storage');
 
 // ================== SIGNUP ==================
 
@@ -141,8 +121,6 @@ router.post('/signup', async (req: Request, res: Response) => {
           refreshToken,
         });
       }
-      // If user doesn't exist, we could create one or fall through. 
-      // For now, let's fall through to normal check which will fail if user doesn't exist.
     }
 
     if (useSupabase && supabase) {
@@ -187,7 +165,7 @@ router.post('/signup', async (req: Request, res: Response) => {
       });
 
     } else {
-      // ===== LOCAL MODE =====
+      // ===== LOCAL MODE (IN-MEMORY) =====
       const users = getLocalUsers();
       
       const existingUser = users.find(u => u.email === emailLower);
@@ -289,7 +267,7 @@ router.post('/login', async (req: Request, res: Response) => {
       });
 
     } else {
-      // ===== LOCAL MODE =====
+      // ===== LOCAL MODE (IN-MEMORY) =====
       const users = getLocalUsers();
       const user = users.find(u => u.email === emailLower);
 
@@ -451,7 +429,6 @@ router.get('/me', authMiddleware, async (req: Request, res: Response) => {
 // ================== LOGOUT ==================
 
 router.post('/logout', authMiddleware, async (req: Request, res: Response) => {
-  // In a production app, you'd invalidate the refresh token here
   return res.json({
     message: 'تم تسجيل الخروج بنجاح',
     messageEn: 'Logged out successfully',
