@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "yarn build:client",
+  "buildCommand": "pnpm build:client",
   "outputDirectory": "dist",
-  "installCommand": "yarn install --ignore-engines",
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/[...path].ts" },
     { "source": "/:path*", "destination": "/index.html" }
